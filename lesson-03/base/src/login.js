@@ -1,10 +1,10 @@
 window.addEventListener("load", start);
 
 function start() {
-  document.querySelector("form").addEventListener("submit", onLogin);
+  document.querySelector("form").addEventListener("submit", onRegister);
 }
 
-async function onLogin(event) {
+async function onRegister(event) {
   event.preventDefault();
 
   const formData = new FormData(event.target);

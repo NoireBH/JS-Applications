@@ -47,15 +47,31 @@ function createRecipeCard(recipe) {
 }
 
 function CheckUser(){
-    const userData = JSON.parse(localStorage.getItem('user'));
+    const userData = sessionStorage.getItem('authToken');
 
     if (userData) {
         document.getElementById('user').style.display = 'inline-block';
+        document.getElementById('logoutBtn').addEventListener('click', logout);
     }
     else{
         document.getElementById('guest').style.display = 'inline-block';
     }
 
+}
+
+async function logout() {
+    const response = await fetch('http://localhost:3030/users/logout', {
+        method: 'get',
+        headers: {
+            'X-Authorization': sessionStorage.getItem('authToken')
+        },
+    });
+    if (response.status == 204) {
+        sessionStorage.removeItem('authToken');
+        window.location = '/lesson-03/base';
+    } else {
+        console.error(await response.json());
+    }
 }
 
 window.addEventListener('load', async () => {

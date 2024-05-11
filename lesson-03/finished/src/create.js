@@ -16,7 +16,7 @@ async function onSubmit(data) {
 
     const token = sessionStorage.getItem('authToken');
     if (token == null) {
-        return window.location.pathname = 'index.html';
+        return window.location = '/lesson-03/base';
     }
 
     try {
@@ -30,7 +30,7 @@ async function onSubmit(data) {
         });
         
         if (response.status == 200) {
-            window.location.pathname = 'index.html';
+            window.location = '/lesson-03/base';
         } else {
             throw new Error(await response.json());
         }

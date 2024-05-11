@@ -53,9 +53,9 @@ async function logout() {
             'X-Authorization': sessionStorage.getItem('authToken')
         },
     });
-    if (response.status == 200) {
+    if (response.status == 204) {
         sessionStorage.removeItem('authToken');
-        window.location.pathname = 'index.html';
+        window.location = '/lesson-03/finished';
     } else {
         console.error(await response.json());
     }

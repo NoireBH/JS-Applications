@@ -1,10 +1,10 @@
 window.addEventListener('load', start)
 
 function start(){
-    document.querySelector('form').addEventListener('submit', onRegister);
+    document.querySelector('form').addEventListener('submit', onCreate);
 }
 
-async function onRegister(event) {
+async function onCreate(event) {
     event.preventDefault();
   
     const formData = new FormData(event.target);
@@ -39,7 +39,7 @@ async function onRegister(event) {
       }
   
       const userData = await res.json();
-      localStorage.setItem('user', JSON.stringify(userData));
+      sessionStorage.setItem('authToken', userData.accessToken);
   
       window.location = '/lesson-03/base';
   
